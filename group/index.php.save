@@ -8,30 +8,34 @@
 	switch($arg['method']){
 		case 'GET':
 //			echo "list::";
-			$ret = group_list($_GET['name']);
+			$ret = group_list();
 			echo json_encode($ret);
 			break;
 		case 'PUT':
-			// TODO: обработчик должен получать список пользователей в группе
 //			echo "update::";
-			$ret = group_adduser($_GET['token'], $_GET['u']);
+			$ret = group_update($arg['args']['token'], $arg['args']['u']);
 			echo json_encode($ret);
 			break;
 		case 'POST':
 //			echo "create::";
-			$ret = group_create($_POST['token'], $_POST['name']);
+			$ret = group_create($arg['args']['token'], $arg['args']['name']);
 			echo json_encode($ret);
 			break;
 		case 'DELETE':
 //			echo "del::";
-			$ret = group_del($_GET['token']);
+			$ret = group_del($arg['args']['token']);
 			echo json_encode($ret);
 			break;
 	}
 
-// вернуть список пользователей в конкретной или в о всех группах
+// получить список пользователей во всех или в указанной группе
 function group_list($name){
-	// TODO: вернуть список групп
+	
+}
+
+// обновить список пользователей в группе
+function group_update(){
+
 }
 
 // удалить пользователя из своей группы

@@ -16,6 +16,7 @@ function connect(){
 	// mysql_query($connection, 'SET NAMES \'latin1\'');
 	if (!$db_select)
 		die("DB selection error: " . mysql_error());
+	mysql_set_charset('utf8');
 	return $connection;
 }
 

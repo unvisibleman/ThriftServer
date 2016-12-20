@@ -1,5 +1,5 @@
 <?php
-
+//	author: igor
 //	echo "item::";
 	include('../library.php');
 	$db = connect();
@@ -8,22 +8,22 @@
 	switch($arg['method']){
 		case 'GET':
 //			echo "get::";
-			$ret = item_get($arg['args']['token'], $arg['args']['m'], $arg['args']['y'], $arg['args']['cat']);
+			$ret = item_get($_GET['token'], $_GET['m'], $_GET['y'], $_GET['cat']);
 			echo json_encode($ret);
 			break;
 		case 'PUT':
 //			echo "edit::";
-			$ret = item_edit($arg['args']['token'], $arg['args']['id'], $arg['args']['price'], $arg['args']['date'], $arg['args']['title'], $arg['args']['group'], $arg['args']['cat']);
+			$ret = item_edit($_GET['token'], $_GET['id'], $_GET['price'], $_GET['date'], $_GET['title'], $_GET['group'], $_GET['cat']);
 			echo json_encode($ret);
 			break;
 		case 'POST':
 //			echo "add::";
-			$ret = item_add($arg['args']['token'], $arg['args']['price'], $arg['args']['date'], $arg['args']['title'], $arg['args']['group'], $arg['args']['cat']);
+			$ret = item_add($_POST['token'], $_POST['price'], $_POST['date'], $_POST['title'], $_POST['group'], $_POST['cat']);
 			echo json_encode($ret);
 			break;
 		case 'DELETE':
 //			echo "del::";
-			$ret = item_del($arg['args']['token'], $arg['args']['id']);
+			$ret = item_del($_GET['token'], $_GET['id']);
 			echo json_encode($ret);
 			break;
 	}
@@ -68,7 +68,8 @@ function item_edit($token, $id, $price, $date, $title, $group, $category){
 	}
 }
 
-// POST http://invisiblelab.tk/api/item/?token=098f6bcd4621d373cade4e832627b4f6&price=10&date=2016.12.14&title=tit&group=0&cat=1
+// POST http://invisiblelab.tk/api/item/
+// token=098f6bcd4621d373cade4e832627b4f6&price=10&date=2016.12.14&title=tit&group=0&cat=1
 function item_add($token, $price, $date, $title, $group, $category){
 //	echo $token, $price, $date, $title, $group, $category;
 	if($token=='' || $price=='' || $date=='' || $title=='' || $group=='' || $category=='' ){
