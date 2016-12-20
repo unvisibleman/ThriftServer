@@ -1,14 +1,13 @@
 <?php
-
+	// author: igor
 //	echo "user::";
 	include('../library.php');
 	$db = connect();
-
 	$arg = getArgs();
 	switch($arg['method']){
 		case 'GET':
 //			echo "auth::";
-			$ret = user_auth($arg['args']['login'], $arg['args']['password']);
+			$ret = user_auth($_GET['login'], $_GET['password']);
 			echo json_encode($ret);
 			break;
 		case 'PUT':
@@ -16,12 +15,12 @@
 			break;
 		case 'POST':
 //			echo "add::";
-			$ret = user_add($arg['args']['login'], $arg['args']['password']);
+			$ret = user_add($_POST['login'], $_POST['password']);
 			echo json_encode($ret);
 			break;
 		case 'DELETE':
 //			echo "del::";
-			$ret = user_del($arg['args']['token']);
+			$ret = user_del($_GET['token']);
 			echo json_encode($ret);
 			break;
 	}
