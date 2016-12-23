@@ -27,7 +27,7 @@
 
 
 function user_auth($login, $password){
-	if($password == '' || $login == ''){
+    if($password == '' || $login == ''){
 		// Empty login or password
         return ['code' => 400, 'data' => "Empty login or password"];
     }
@@ -39,7 +39,7 @@ function user_auth($login, $password){
         return ['code' => 200, 'data' => $usrToken ];
     } else {
         // error
-        return ['code' => 400, 'data' => 'User not regestered yet'];
+        return ['code' => 400, 'data' => 'User not regestered yet' ];
     }
 }
 

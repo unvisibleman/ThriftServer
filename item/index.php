@@ -37,7 +37,7 @@ function item_get($token, $month, $year, $category){
 	$uid = get_uid(get_login($token));
 	$dateFrom = $year.'.'.$month.'.1';
 	$dateTo = $year.'.'.$month.'.31'; // TODO: узнать, реагирует ли MySQL на месяцы, в кот. <31 дней
-	$res = mysql_query("SELECT * FROM budget WHERE user_id='$uid' and date >='$dateFrom' AND date <= '$dateTo'");
+	$res = mysql_query("SELECT * FROM budget WHERE user_id='$uid' and date >='$dateFrom' AND date <= '$dateTo' AND category_id='$category'");
 	if($res){
 		$data = array();
 		while($line =  mysql_fetch_assoc($res)) $data[] = $line;
